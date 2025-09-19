@@ -20,7 +20,7 @@ export default function ExpenseTrack() {
 
   const fetchData = async () => {
     await axios
-      .get("http://localhost:5000/api/")
+      .get("https://expense-tracker-back-end-nxl8.onrender.com/api/")
       .then((response) => {
         setExpenses(response.data);
       })
@@ -33,7 +33,7 @@ export default function ExpenseTrack() {
     if (itemToEdit) {
       // Update existing expense
       axios
-        .put(`http://localhost:5000/api/${id}`, {
+        .put(`https://expense-tracker-back-end-nxl8.onrender.com/api/${id}`, {
           title,
           amount
         })
@@ -45,7 +45,7 @@ export default function ExpenseTrack() {
     } else {
       // Add new expense
       axios
-        .post("http://localhost:5000/api/post", {
+        .post("https://expense-tracker-back-end-nxl8.onrender.com/api/post", {
           title,
           amount: Number(amount),
         })
@@ -58,7 +58,7 @@ export default function ExpenseTrack() {
     console.log(id);
 
     axios
-      .delete(`http://localhost:5000/api/${id}`)
+      .delete(`https://expense-tracker-back-end-nxl8.onrender.com/api/${id}`)
       .then(() => setExpenses(expenses.filter((item) => item._id !== id)))
       .catch((error) => console.error("Delete Error:", error));
   };
